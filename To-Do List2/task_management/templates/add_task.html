@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3 class="mt-5">Add New Task Data</h3>
+<div class="col-md-6">
+
+    <form method="POST" action="{% url 'add_task' %}">
+        {% csrf_token %}
+        <table class="table">
+            <tr>
+                <td>Task Name: </td>
+                <td><input type="text" name="tname" id="" required></td>
+
+            </tr>
+
+            <tr>
+                <td>Task Description: </td>
+                <td><textarea id="desc" name="tdesc" rows="4" cols="50"></textarea></td>
+                <!--<td><input type="text" name="bauthor" id="" required></td>-->
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Add Task" class="btn btn-primary">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{% endblock content %}

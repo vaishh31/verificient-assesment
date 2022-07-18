@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3 class="mt-5">Edit Task Data</h3>
+<div class="col-md-6">
+    {% for i in data %}
+    <form method="POST" action="{% url 'edit_task' i.id %}">
+        {% csrf_token %}
+        <table class="table">
+
+            <tr>
+                <td>Task Name: </td>
+                <td><input type="text" name="tuname" id="" value="{{i.name}}" required></td>
+
+            </tr>
+
+            <tr>
+                <td>Task Description: </td>
+                <td><input type="text" name="tudesc" id="" value="{{i.author}}" required></td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Update" class="btn btn-primary">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+    {% endfor %}
+</div>
+
+{% endblock content %}

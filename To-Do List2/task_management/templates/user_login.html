@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="col-mt-6 mt-5">
+    <form method="POST" action="{% url 'user_login' %}">
+        {% csrf_token %}
+        <table class="table">
+            {{form}}
+            <tr>
+                <td><input type="submit" value="Login" class="btn btn-primary"></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+{% endblock content %}

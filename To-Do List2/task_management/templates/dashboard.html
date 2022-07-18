@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3 class="mt-5">TO-DO LIST</h3>
+{% if is_superuser %}
+<div class="col-mt-5">
+
+    <a href="{% url 'add_task' %}"><button class="btn btn-warning">Add Task</a>
+</div>
+{% endif %}
+
+<div class="col md 8">
+    <table class="table">
+        <tr>
+            <th>Task Name</th>
+            <th>Description</th>
+            {% if is_superuser %}
+            <th>Edit</th>
+            <th>Delete</th>
+            {% endif %}
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>{{i.task_name}}</td>
+            <td>{{i.task_description}}</td>
+            {% if is_superuser %}
+            <td><a href="/edit/{{i.id}}"><button class="btn btn-warning" >Edit</button></a></td>
+            <td><a href="/delete/{{i.id}}"><button class="btn btn-danger" >Delete</button></a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock content %}
